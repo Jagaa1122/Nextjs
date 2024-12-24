@@ -1,11 +1,12 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Card } from "@/components/Card";
-
+import Page from "@/components/calculator/Page";
 export default function Home() {
   return (
     <div className={styles.container}>
-      <div>
+      <Page />
+      {/* <div>
         <h2>Hello World</h2>
 
         <Card
@@ -31,7 +32,7 @@ export default function Home() {
           }
           imgUrl={"https://cdn.staticneo.com/w/naruto/Nprofile2.jpg"}
         />
-      </div>
+      </div> */}
     </div>
   );
 }
