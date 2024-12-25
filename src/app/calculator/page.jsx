@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <div>
       <p>Number: {number}</p>
-      <div style={{ display: "flex" }}>
+      <div>
         {numbers.map((number) => {
           return (
             <div>

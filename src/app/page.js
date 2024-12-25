@@ -1,38 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Card } from "@/components/Card";
-import Page from "@/components/calculator/Page";
 export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Page />
-      {/* <div>
-        <h2>Hello World</h2>
-
-        <Card
-          name="Naruto"
-          description={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, deserunt."
-          }
-          imgUrl={"https://cdn.staticneo.com/w/naruto/Nprofile2.jpg"}
-        />
-
-        <Card
-          name="Naruto"
-          description={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, deserunt."
-          }
-          imgUrl={"https://cdn.staticneo.com/w/naruto/Nprofile2.jpg"}
-        />
-
-        <Card
-          name="Naruto"
-          description={
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, deserunt."
-          }
-          imgUrl={"https://cdn.staticneo.com/w/naruto/Nprofile2.jpg"}
-        />
-      </div> */}
-    </div>
-  );
+  return <div className={styles.container}></div>;
 }
