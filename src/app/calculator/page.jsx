@@ -9,30 +9,55 @@ export default function Page() {
   function clearHandler() {
     setScreen("");
   }
-  function operationHandler() {
-    for (let i = 0; i < screen.length; i++) {
-      if (screen[i] === "+") {
-        const nums = screen.split("+");
-        const result = Number(nums[0]) + Number(nums[1]);
-        setScreen(result);
+  // function operationHandler() {
+  //   for (let i = 0; i < screen.length; i++) {
+  //     if (screen[i] === "+") {
+  //       const nums = screen.split("+");
+  //       const result = Number(nums[0]) + Number(nums[1]);
+  //       setScreen(result);
+  //     }
+  //     if (screen[i] === "-") {
+  //       const nums = screen.split("-");
+  //       const result1 = Number(nums[0]) - Number(nums[1]);
+  //       setScreen(result1);
+  //     }
+
+  //     if (screen.includes("*")) {
+  //       const nums = screen.split("*");
+  //       const result1 = Number(nums[0]) * Number(nums[1]);
+  //       setScreen(result1);
+  //     }
+  //     if (screen.includes("/")) {
+  //       const nums = screen.split("/");
+  //       const result1 = Number(nums[0]) / Number(nums[1]);
+  //       setScreen(result1);
+  //     }
+  //   }
+  // }
+
+
+function operationHandler() {
+  const numbers = screen.split(/[\+\-\*\/]/).map(Number);
+  const operators = screen.match(/[\+\-\*\/]/g); 
+  let result = numbers[0];
+  for (let i = 0; i < operators.length; i++) {
+      switch (operators[i]) {
+          case "+":
+              result += numbers[i + 1];
+              break;
+          case "-":
+              result -= numbers[i + 1];
+              break;
+          case "*":
+              result *= numbers[i + 1];
+              break;
+          case "/":
+              result /= numbers[i + 1];
+              break;
       }
-      if (screen[i] === "-") {
-        const nums = screen.split("-");
-        const result1 = Number(nums[0]) - Number(nums[1]);
-        setScreen(result1);
-      }
-    }
-    if (screen.includes("*")) {
-      const nums = screen.split("*");
-      const result1 = Number(nums[0]) * Number(nums[1]);
-      setScreen(result1);
-    }
-    if (screen.includes("/")) {
-      const nums = screen.split("/");
-      const result1 = Number(nums[0]) / Number(nums[1]);
-      setScreen(result1);
-    }
   }
+  setScreen(result);
+}
 
   return (
     <div className={styles.pageContainer}>
@@ -48,7 +73,7 @@ export default function Page() {
           <button onClick={() => buttonClicked(7)}>7</button>
           <button onClick={() => buttonClicked(8)}>8</button>
           <button onClick={() => buttonClicked(9)}>9</button>
-          <button onClick={() => buttonClicked(10)}>0</button>
+          <button onClick={() => buttonClicked(0)}>0</button>
           <button onClick={() => buttonClicked("+")}>+</button>
           <button onClick={() => buttonClicked("-")}>-</button>
           <button onClick={() => buttonClicked("*")}>*</button>
