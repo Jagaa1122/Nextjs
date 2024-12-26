@@ -1,21 +1,61 @@
 "use client";
 import { useState } from "react";
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-
+import styles from "./page.module.css";
 export default function Page() {
-  const [number, setNumber] = useState();
+  const [screen, setScreen] = useState("");
+  function buttonClicked(too) {
+    setScreen(screen + too);
+  }
+  function clearHandler() {
+    setScreen("");
+  }
+  function operationHandler() {
+    for (let i = 0; i < screen.length; i++) {
+      if (screen[i] === "+") {
+        const nums = screen.split("+");
+        const result = Number(nums[0]) + Number(nums[1]);
+        setScreen(result);
+      }
+      if (screen[i] === "-") {
+        const nums = screen.split("-");
+        const result1 = Number(nums[0]) - Number(nums[1]);
+        setScreen(result1);
+      }
+    }
+    if (screen.includes("*")) {
+      const nums = screen.split("*");
+      const result1 = Number(nums[0]) * Number(nums[1]);
+      setScreen(result1);
+    }
+    if (screen.includes("/")) {
+      const nums = screen.split("/");
+      const result1 = Number(nums[0]) / Number(nums[1]);
+      setScreen(result1);
+    }
+  }
 
   return (
-    <div>
-      <p>Number: {number}</p>
-      <div>
-        {numbers.map((number) => {
-          return (
-            <div>
-              <button onClick={() => setNumber(number)}>{number}</button>
-            </div>
-          );
-        })}
+    <div className={styles.pageContainer}>
+      <div className={styles.calculator}>
+        <p>{screen}</p>
+        <div className={styles.buttonContainer}>
+          <button onClick={() => buttonClicked(1)}>1</button>
+          <button onClick={() => buttonClicked(2)}>2</button>
+          <button onClick={() => buttonClicked(3)}>3</button>
+          <button onClick={() => buttonClicked(4)}>4</button>
+          <button onClick={() => buttonClicked(5)}>5</button>
+          <button onClick={() => buttonClicked(6)}>6</button>
+          <button onClick={() => buttonClicked(7)}>7</button>
+          <button onClick={() => buttonClicked(8)}>8</button>
+          <button onClick={() => buttonClicked(9)}>9</button>
+          <button onClick={() => buttonClicked(10)}>0</button>
+          <button onClick={() => buttonClicked("+")}>+</button>
+          <button onClick={() => buttonClicked("-")}>-</button>
+          <button onClick={() => buttonClicked("*")}>*</button>
+          <button onClick={() => buttonClicked("/")}>/</button>
+          <button onClick={operationHandler}>=</button>
+          <button onClick={clearHandler}>C</button>
+        </div>
       </div>
     </div>
   );

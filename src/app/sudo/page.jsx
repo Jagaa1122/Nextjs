@@ -9,6 +9,7 @@ export default function Sudo() {
     const sorted = number.sort((a, b) => {
       return a - b;
     });
+    console.log(sorted);
     setNumber([...sorted]);
   };
   const dec = () => {
